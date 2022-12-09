@@ -480,6 +480,12 @@ body {
 
   .menu__mobile {
     display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .menu__inner {
+    display: flex;
     justify-content: space-between;
     align-items: center;
   }
@@ -490,31 +496,74 @@ body {
 
   .menu {
     display: none;
+    text-align: center;
+  }
+
+  .menu li {
+    padding: 15px 0;
+  }
+
+  .menu a {
+    margin: 0;
   }
 
   .menu__burger {
-    width: 30px;
-    height: 3px;
+    display: block;
+    overflow: hidden;
+    padding: 0;
+    margin: 0;
+    width: 40px;
+    height: 40px;
+    font-size: 0;
+    border-radius: 5px;
     background-color: #000;
     position: relative;
   }
 
-  .menu__burger::after {
-    content: '';
-    width: 30px;
-    height: 3px;
-    background-color: #000;
+  .menu__burger span {
     position: absolute;
+    display: block;
+    background-color: #fff;
+    height: 4px;
+    width: 30px;
+    top: 18px;
+    left: 5px;
+    right: 5px;
+    transition: background 0s 0.3s;
+  }
+
+  .menu__burger span::after,
+  .menu__burger span::before {
+    position: absolute;
+    display: block;
+    height: 4px;
+    width: 100%;
+    background-color: #fff;
+    content: '';
+    transition-duration: 0.3s, 0.3s;
+    transition-delay: 0.3s, 0s;
+  }
+
+  .menu__burger span::after {
+    top: -10px;
+  }
+
+  .menu__burger span::before {
     bottom: -10px;
   }
 
-  .menu__burger::before {
-    content: '';
-    width: 30px;
-    height: 3px;
-    background-color: #000;
-    position: absolute;
-    top: -10px;
+  .menu__burger.close span {
+    background: none;
+  }
+
+  .menu__burger.close span::after {
+    transform: rotate(45deg);
+    top: 0px;
+  }
+
+  .menu__burger.close span::before {
+    transform: rotate(-45deg);
+    bottom: 0px;
   }
 
   .header__title {
